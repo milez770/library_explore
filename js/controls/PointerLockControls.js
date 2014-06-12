@@ -182,6 +182,7 @@ THREE.PointerLockControls = function ( camera ) {
 		prevTime = time;
 
 	};
+	
 	this.velocity = function(){
 		return velocity;
 	}

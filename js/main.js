@@ -172,7 +172,7 @@ init();
 function draw(){
    requestAnimationFrame(draw);
 //    checkKey();
- 	
+ 	loopPlayer();
   	colCheck();
     controls.isOnObject( false );
 
@@ -315,3 +315,12 @@ function pushOut(){
 		}
 	}
 };
+
+function loopPlayer(){
+	if(loopState){
+		if(playerMesh.position.z <= -170 && playerMesh.position.x > 25){
+			controls.getObject().position.x=0;
+			controls.getObject().position.z=120;
+		}
+	}
+}
