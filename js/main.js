@@ -289,7 +289,7 @@ function mapMake(){
 
 function garbageMake(){
 	var gaGeo1 = new THREE.BoxGeometry(2,6,10);
-	var gaGeo2 = new 
+	var gaGeo2 = new THREE.BoxGEOmetry(3,3,10);
 }
 
 //collision check
