@@ -287,10 +287,10 @@ function mapMake(){
 	 scene.add(mapobjects)
 };
 
-function garbageMake(){
-	var gaGeo1 = new THREE.BoxGeometry(2,6,10);
-	var gaGeo2 = new THREE.BoxGEOmetry(3,3,10);
-}
+// function garbageMake(){
+// 	var gaGeo1 = new THREE.BoxGeometry(2,6,10);
+// 	var gaGeo2 = new THREE.BoxGEOmetry(3,3,10);
+// }
 
 //collision check
 function colCheck(){
