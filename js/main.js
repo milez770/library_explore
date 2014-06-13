@@ -1,10 +1,11 @@
-var scene, camera, renderer, light, controls, ray, counter, blood;
+var scene, camera, renderer, light, controls, ray, counter=0, blood;
 var keys=[];
 var truth = '';
 
 var playerMesh;
 var dummies = {};
 var objects = [];
+
 var fiveRoom = new THREE.BoxGeometry(25,25,25);
 var hRoom = new THREE.BoxGeometry(100,100,100);
 var tenRoom = new THREE.BoxGeometry(50,50,50);
@@ -23,7 +24,8 @@ var pinkMat = new THREE.MeshLambertMaterial({color:0xfb86c7, side:THREE.DoubleSi
 var pDouble = new THREE.MeshLambertMaterial({side:THREE.DoubleSide});
 
 //mapObjects
-var mapobjects ;
+var mapobjects, garObjects ;
+
 
 var blocker = document.getElementById( 'blocker' );
 var instructions = document.getElementById( 'instructions' );
@@ -53,6 +55,7 @@ function init(){
     
     blood = new THREE.Object3D();
 	mapobjects = new THREE.Object3D();
+	garObjects = new THREE.Object3D();
 	
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth-2,window.innerHeight-2);
@@ -65,6 +68,8 @@ function init(){
 
     controls.initiateF();
     mapMake();
+	garObjects.position.z -= 270;
+	garObjects.position.x -= 78;
 
     loopState = true;
 
@@ -214,9 +219,9 @@ function mapMake(){
      var MeshRoom3 = new THREE.Mesh(fiveRoom,greenMat);
      var MeshRoom4 = new THREE.Mesh(tenRoom,yellowMat);
      var MeshRoom5 = new THREE.Mesh(hRoom,blueMat);
-	   var MeshRoom6 = new THREE.Mesh(fiveRoom,purMat);
-	   var MeshRoom7 = new THREE.Mesh(tenRoom,yellowMat);
-	   var MeshRoom8 = new THREE.Mesh(tenRoom,pinkMat);
+   var MeshRoom6 = new THREE.Mesh(fiveRoom,purMat);
+   var MeshRoom7 = new THREE.Mesh(tenRoom,yellowMat);
+   var MeshRoom8 = new THREE.Mesh(tenRoom,pinkMat);
 	   
 	   
      var Meshbath = new THREE.Mesh(bathRoom,blueMat);
@@ -287,10 +292,42 @@ function mapMake(){
 	 scene.add(mapobjects)
 };
 
-// function garbageMake(){
-// 	var gaGeo1 = new THREE.BoxGeometry(2,6,10);
-// 	var gaGeo2 = new THREE.BoxGEOmetry(3,3,10);
-// }
+function garbageMake(){
+	var gaGeo1 = new THREE.BoxGeometry(2,6,10);
+	var gaGeo2 = new THREE.BoxGeometry(10,3,50);
+	var gaGeo3 = new THREE.PlaneGeometry(50,10);
+	var gaGeo4 = new THREE.PlaneGeometry(2,70);
+	
+	var gaar = [gaGeo1,gaGeo2,gaGeo3,gaGeo4];
+	console.log(gaar);
+	var gaMat1 =new THREE.MeshLambertMaterial({color:0xe2d302});
+	var gaMat2 = new THREE.MeshNormalMaterial({side:THREE.DoubleSide});
+	var gaMat3 = new THREE.MeshNormalMaterial();
+	var gaMat4 =new THREE.MeshLambertMaterial({color:0x03e3e0});
+	var gaMat5 =new THREE.MeshLambertMaterial({color:0xd2a4f1});
+	
+	
+	var gamaa = [gaMat1, gaMat2, gaMat3, gaMat4, gaMat5];
+	
+	for(var i = 0; i<counter*10; i++){
+	
+		var mesh = new THREE.Mesh(gaar[Math.floor(Math.random()*4)], gamaa[Math.floor(Math.random()*5)]);
+		mesh.position.x = Math.random()*160;
+		mesh.position.y = Math.random()*40+20;
+		mesh.position.z = Math.random()*400;
+		
+		
+		mesh.rotation.x = Math.random()*10;
+		mesh.rotation.y = Math.random()*10;
+		mesh.rotation.z = Math.random()*10;
+		
+		
+		garObjects.add(mesh);
+		
+		
+		scene.add(garObjects);
+	}
+};
 
 //collision check
 function colCheck(){
@@ -341,18 +378,22 @@ function pushOut(){
 
 function loopPlayer(){
 	
-	if(playerMesh.position.z <= -225  && playerMesh.position.x >=-2.5){
+	if(playerMesh.position.z <= -270  && playerMesh.position.x >=-2.5){
 		controls.getObject().position.x=0;
 		controls.getObject().position.z=120;
 		loopState = false;
-
-    var dummyG = new THREE.BoxGeometry(5,5,5);
-    var dummyM = new THREE.MeshNormalMaterial({color:0xf1e2d3});
-    var dummyP = new THREE.Mesh(dummyG, dummyM);
-    dummyP.position.y = 20;
-    scene.add(dummyP);
-    scene.add(blood);
-    console.log('added');
+		garbageMake();
+		
+		var dummyG = new THREE.BoxGeometry(5,5,5);
+		var dummyM = new THREE.MeshNormalMaterial();
+		var dummyP = new THREE.Mesh(dummyG, dummyM);
+		dummyP.position.y = 20;
+		
+		scene.add(dummyP);
+		scene.add(blood);
+		
+		counter++;
+		
 
 	}
 
@@ -362,3 +403,6 @@ function loopPlayer(){
 		}
 	}
 };
+
+
+//Neon Genesis Evangelion OST 3 - Do you Love Me?
