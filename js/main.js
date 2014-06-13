@@ -316,7 +316,7 @@ function colCheck(){
 //collision
 function pushOut(){
 	
-	if()	
+		
 		if(!colP){
 			velocityP = controls.velocity();
 			colP = true;
