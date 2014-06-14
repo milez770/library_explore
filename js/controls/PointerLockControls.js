@@ -180,7 +180,7 @@ THREE.PointerLockControls = function ( camera ) {
 		playerMesh.position = yawObject.position;
 		playerMesh.center = yawObject.position;
 		prevTime = time;
-
+		colCheck();
 	};
 	
 	this.velocity = function(){
