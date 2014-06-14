@@ -230,6 +230,7 @@ function pushOut(){
 		if(!colP){
 			velocityP = controls.velocity();
 			console.log(velocityP);
+			colP = true;
 		}
 		if(colP){
 			
