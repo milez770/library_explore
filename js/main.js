@@ -217,7 +217,7 @@ function colCheck(){
 			pushOut();
 			
 		}
-		else if(!collisionResults.length ){
+		else {
 			colP = false;
 		}
 	}	
