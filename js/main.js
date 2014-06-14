@@ -217,7 +217,7 @@ function colCheck(){
 			pushOut();
 			
 		}
-		else{
+		else if(collisionResults.length =0){
 			colP = false;
 		}
 	}	
@@ -230,7 +230,6 @@ function pushOut(){
 		if(!colP){
 			velocityP = controls.velocity();
 			console.log(velocityP);
-			colP = true;
 		}
 		else if(colP){
 			
