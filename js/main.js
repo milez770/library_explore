@@ -55,10 +55,6 @@ function init(){
 
     controls.initiateF();
     mapMake();
-	garObjects.position.z -= 270;
-	garObjects.position.x -= 78;
-
-
     //bloodmar
 
     scene.add(playerMesh);
