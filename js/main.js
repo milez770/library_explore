@@ -194,9 +194,6 @@ draw();
 function mapMake(){
 
    var MeshRoom8 = new THREE.Mesh(fiveRoom,pinkMat);
-
-  
-	   MeshRoom8.position.x = -50;
 	   MeshRoom8.position.y = 31.7;
 
 	 objects.push(MeshRoom8);
