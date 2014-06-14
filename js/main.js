@@ -215,7 +215,7 @@ function colCheck(){
 		
 		if ( collisionResults.length > 0 && collisionResults[0].distance < directionVector.length() ){ 
 			pushOut();
-			console.log(controls.velocity());
+			
 		}
 		else{
 			colP = false;
@@ -232,7 +232,7 @@ function pushOut(){
 			colP = true;
 		}
 		else if(colP){
-
+			console.log(velocityP);
 			if(velocityP.z < 0){
 				controls.velocity().z = Math.max(0,controls.velocity().z);
 			}
