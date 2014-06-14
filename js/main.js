@@ -229,10 +229,11 @@ function pushOut(){
 		
 		if(!colP){
 			velocityP = controls.velocity();
+			console.log(velocityP);
 			colP = true;
 		}
 		else if(colP){
-			console.log(velocityP);
+			
 			if(velocityP.z < 0){
 				controls.velocity().z = Math.max(0,controls.velocity().z);
 			}
