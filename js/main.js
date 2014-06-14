@@ -156,7 +156,7 @@ init();
 function draw(){
 
   	requestAnimationFrame(draw);
-
+	controls.update();
   	colCheck();
 	
 //     controls.isOnObject( false );
@@ -177,7 +177,7 @@ function draw(){
 
 //     }
    
-   controls.update();
+   
    
    
    light.position = controls.getObject().position;
