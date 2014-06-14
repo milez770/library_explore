@@ -156,7 +156,7 @@ init();
 function draw(){
 
   	requestAnimationFrame(draw);
-	controls.update();
+	
   	colCheck();
 	
 //     controls.isOnObject( false );
