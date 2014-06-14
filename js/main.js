@@ -195,6 +195,7 @@ function mapMake(){
 
    var MeshRoom8 = new THREE.Mesh(fiveRoom,pinkMat);
 	   MeshRoom8.position.y = 31.7;
+	   MeshRoom8.position.z = 50;
 
 	 objects.push(MeshRoom8);
 	 mapobjects.add(MeshRoom8);
