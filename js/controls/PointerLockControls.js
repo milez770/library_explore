@@ -22,7 +22,8 @@ THREE.PointerLockControls = function ( camera ) {
 	var prevTime = performance.now();
 
 	var velocity = new THREE.Vector3();
-
+	this.vel = velocity;
+	this.yo = yawObject
 	var PI_2 = Math.PI / 2;
 
 	var onMouseMove = function ( event ) {
@@ -40,31 +41,43 @@ THREE.PointerLockControls = function ( camera ) {
 	};
 
 	var onKeyDown = function ( event ) {
-
+		
 		switch ( event.keyCode ) {
-
+			
+			case 69:
+				talk();
+				break;
+			
 			case 38: // up
 			case 87: // w
 				moveForward = true;
+				Wasd += 'w';
+				
+
 				break;
 
 			case 37: // left
 			case 65: // a
-				moveLeft = true; break;
+				moveLeft = true;
+				Wasd += 'a';
+			    break;
 
 			case 40: // down
 			case 83: // s
 				moveBackward = true;
+				Wasd += 's';
 				break;
 
 			case 39: // right
 			case 68: // d
 				moveRight = true;
+				Wasd += 'd';
 				break;
 
 			case 32: // space
 				if ( canJump === true ) velocity.y += 100;
 				canJump = false;
+				Wasd += '%20';
 				break;
 
 		}
@@ -74,7 +87,7 @@ THREE.PointerLockControls = function ( camera ) {
 	var onKeyUp = function ( event ) {
 
 		switch( event.keyCode ) {
-
+			
 			case 38: // up
 			case 87: // w
 				moveForward = false;
@@ -120,25 +133,27 @@ THREE.PointerLockControls = function ( camera ) {
 
 	this.getDirection = function() {
 
-		// assumes the camera itself is not rotated
+	// assumes the camera itself is not rotated
 
-		var direction = new THREE.Vector3( 0, 0, -1 );
-		var rotation = new THREE.Euler( 0, 0, 0, "YXZ" );
+	var direction = new THREE.Vector3( 0, 0, -1 );
+	var rotation = new THREE.Euler( 0, 0, 0, "YXZ" );
 
-		return function( v ) {
 
-			rotation.set( pitchObject.rotation.x, yawObject.rotation.y, 0 );
+	return function(  ) {
+		var v = yawObject.position.clone();
+		rotation.set( pitchObject.rotation.x, yawObject.rotation.y, 0 );
 
-			v.copy( direction ).applyEuler( rotation );
+		v.copy( direction ).applyEuler( rotation );
 
-			return v;
+		return v;
 
-		}
+	}
 
 	}();
 	this.initiateF = function(){
 		yawObject.position.x = 0;
-		yawObject.position.z = 123;
+		yawObject.position.z = 112;
+		yawObject.position.y = 27;
 	}
 	this.update = function () {
 
@@ -161,30 +176,28 @@ THREE.PointerLockControls = function ( camera ) {
 		if ( isOnObject === true ) {
 
 			velocity.y = Math.max( 0, velocity.y );
+			
 		}
-		
-		yawObject.translateX( velocity.x * delta );
-		yawObject.translateY( velocity.y * delta ); 
-		yawObject.translateZ( velocity.z * delta );
+		yawObject.translateY( velocity.y * delta );
+		yawObject.translateX( velocity.x * delta/5 );
+		yawObject.translateZ( velocity.z * delta/5 );
 
-		if ( yawObject.position.y < 16 ) {
+		
+		
+		if ( yawObject.position.y < -500 ) {
 
 			velocity.y = 0;
-			yawObject.position.y = 16;
-
+			yawObject.position.y = 17;
+			yawObject.position.x = 0;
+			yawObject.position.z = 112;
 			canJump = true;
 
 		}
 		
 		
 		playerMesh.position = yawObject.position;
-		playerMesh.center = yawObject.position;
 		prevTime = time;
-		colCheck();
+
 	};
-	
-	this.velocity = function(){
-		return velocity;
-	}
 
 };
