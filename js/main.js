@@ -214,7 +214,7 @@ function draw(){
   	requestAnimationFrame(draw);
 
     loopPlayer();
-  //	colCheck();
+  	colCheck();
 
 	dummyP.rotation.y += 0.01;
 	
