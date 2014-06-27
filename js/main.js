@@ -553,7 +553,6 @@ function loopPlayer(){
 	if(playerMesh.position.z <= -270  && playerMesh.position.x >=-2.5){
 		controls.getObject().position.x=0;
 		controls.getObject().position.z=120;
-		loopState = false;
 		garbageMake();
 		
 		
@@ -563,7 +562,7 @@ function loopPlayer(){
 		dummies.add(dummyP);
 		scene.add(dummyP);
 		
-		if(!gameEnd){
+		if(!gameEnd && !loopState){
 			noLoopEnd();
 			gameEnd = true;
 		}
@@ -589,8 +588,8 @@ function noLoopEnd(){
 		scene.add(noLoopMesh);
 		objects.push(noLoopMesh);
 		
-		for(var i =3; i<Wasd.length; i++){
-			var trueText = new THREE.TextGeometry(Wasd.toString().slice(i-3,i),{
+		for(var i =1; i<Wasd.length; i++){
+			var trueText = new THREE.TextGeometry(Wasd.toString().slice(i-1,i),{
 				font:'vcr osd mono',
 				weight:'normal', 
 				size:1,
@@ -624,6 +623,8 @@ function talk(){
 		var audio = new Audio();
 		audio.src = './source/metro-interior-1.mp3';
 		audio.play();
+		
+		loopState = false;
 	}
 }
 
