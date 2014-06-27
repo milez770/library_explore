@@ -621,7 +621,7 @@ function noLoopEnd(){
 function talk(){
 	if(controls.getObject().position.distanceTo(dummyP.position)<12 && talking == false){
 		var audio = new Audio();
-		audio.src = './source/metro-interior-1.mp3';
+		audio.src = './source/computer_noise.mp3';
 		audio.play();
 		
 		loopState = false;
