@@ -189,8 +189,8 @@ THREE.PointerLockControls = function ( camera ) {
 		}
 		if(run){
 			yawObject.translateY( velocity.y * delta );
-			yawObject.translateX( velocity.x * delta*4 );
-			yawObject.translateZ( velocity.z * delta*4 );
+			yawObject.translateX( velocity.x * delta*6 );
+			yawObject.translateZ( velocity.z * delta*6 );
 		}
 		else if(!run){
 			yawObject.translateY( velocity.y * delta );
