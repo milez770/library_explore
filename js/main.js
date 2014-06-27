@@ -622,9 +622,8 @@ function talk(){
 	if(controls.getObject().position.distanceTo(dummyP.position)<12 && talking == false){
 		var audio = new Audio();
 		audio.src = './source/computer_noise.mp3';
-	    audio.currentTime = 110;
 		audio.play();
-		audio.volume = 0.5;
+		audio.volume = 0.2;
 		
 		loopState = false;
 	}
