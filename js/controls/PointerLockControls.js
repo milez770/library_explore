@@ -182,16 +182,22 @@ THREE.PointerLockControls = function ( camera ) {
 
 		if ( moveLeft ) velocity.x -= 200.0 * delta/5;
 		if ( moveRight ) velocity.x += 200.0 * delta/5;
-		if (run) velocity.x *= 1.01, velocity.z *= 1.01;
-		
 		if ( isOnObject === true ) {
 
 			velocity.y = Math.max( 0, velocity.y );
 			
 		}
-		yawObject.translateY( velocity.y * delta );
-		yawObject.translateX( velocity.x * delta );
-		yawObject.translateZ( velocity.z * delta );
+		if(run){
+			yawObject.translateY( velocity.y * delta );
+			yawObject.translateX( velocity.x * delta*2 );
+			yawObject.translateZ( velocity.z * delta*2 );
+		}
+		else if(!run){
+			yawObject.translateY( velocity.y * delta );
+			yawObject.translateX( velocity.x * delta );
+			yawObject.translateZ( velocity.z * delta );
+		}
+		
 
 		
 		
