@@ -375,9 +375,9 @@ function garbageMake(){
 	
 		for(var i = 0; i<counterr*5; i++){
 			var mesh = new THREE.Mesh(gaar[Math.floor(Math.random()*4)], gamaa[Math.floor(Math.random()*5)]);
-			mesh.position.x = Math.random()*200*(Math.random-0.5);
+			mesh.position.x = Math.random()*200*(Math.random()-0.5);
 			mesh.position.y = Math.random()*50+10;
-			mesh.position.z = Math.random()*350*(Math.random-0.5);
+			mesh.position.z = Math.random()*350*(Math.random()-0.5);
 			
 			
 			mesh.rotation.x = Math.random()*10;
