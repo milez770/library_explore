@@ -373,7 +373,7 @@ function garbageMake(){
 	
 	var gamaa = [gaMat1, gaMat2, gaMat3, gaMat4, gaMat5];
 	
-	
+	for(var i = 0; i<counterr; i++){
 		var mesh = new THREE.Mesh(gaar[Math.floor(Math.random()*4)], gamaa[Math.floor(Math.random()*5)]);
 		mesh.position.x = Math.random()*200*(Math.random-0.5);
 		mesh.position.y = Math.random()*50+10;
@@ -390,7 +390,9 @@ function garbageMake(){
 		audioarr[mesh.id].src ='http://translate.google.com/translate_tts?ie=utf-8&tl=en&q='+Wasd.slice(randomLen,randomLen+100*Math.random());
 		
 		garObjects.add(mesh);
+		
 		scene.add(garObjects);
+	}
 	};
 
 
@@ -553,6 +555,7 @@ function loopPlayer(){
 	if(playerMesh.position.z <= -270  && playerMesh.position.x >=-2.5){
 		controls.getObject().position.x=0;
 		controls.getObject().position.z=120;
+		
 		garbageMake();
 		
 		
